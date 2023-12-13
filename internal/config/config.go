@@ -28,7 +28,7 @@ func GetConfDB() string {
 }
 
 func GetConfigApp() fiber.Config {
-	engine := html.New("../../../frontend", ".html")
+	engine := html.New("../../frontend", ".html")
 
 	return fiber.Config{
 		AppName:       "Jepix",

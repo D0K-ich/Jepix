@@ -18,7 +18,7 @@ func MainRouteP(c *fiber.Ctx) error {
 }
 
 func Authorization(c *fiber.Ctx) error {
-	return c.Render("index3", fiber.Map{})
+	return c.Render("authorization", fiber.Map{})
 }
 
 func AuthorizationP(c *fiber.Ctx) error {

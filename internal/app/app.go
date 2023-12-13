@@ -27,7 +27,7 @@ func StartServer() {
 	app := fiber.New(cfg.GetConfigApp())
 	log.Trace("Config loaded")
 
-	app.Static("/", "../../../frontend/tmp")
+	app.Static("/", "../../frontend/tmp")
 	log.Trace("Static files loaded")
 
 	app.Get("/main", Routes.MainRoute)

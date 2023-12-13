@@ -477,3 +477,19 @@
 2023/12/13 19:22:06.931373 app.go:31: [Trace] Static files loaded
 2023/12/13 19:22:06.931373 app.go:35: [Trace] Main page opened
 2023/12/13 19:22:06.931373 app.go:40: [Trace] Authorization page opened
+2023/12/14 00:02:21.587848 app.go:56: [Trace] Logger loaded
+2023/12/14 00:02:21.597252 app.go:999: [Warn] failed to load views: CreateFile ../../../frontend: The system cannot find the file specified.
+2023/12/14 00:02:21.597252 app.go:28: [Trace] Config loaded
+2023/12/14 00:02:21.597252 app.go:31: [Trace] Static files loaded
+2023/12/14 00:02:21.597252 app.go:35: [Trace] Main page opened
+2023/12/14 00:02:21.597252 app.go:40: [Trace] Authorization page opened
+2023/12/14 00:29:18.323329 app.go:56: [Trace] Logger loaded
+2023/12/14 00:29:18.335226 app.go:28: [Trace] Config loaded
+2023/12/14 00:29:18.335226 app.go:31: [Trace] Static files loaded
+2023/12/14 00:29:18.335226 app.go:35: [Trace] Main page opened
+2023/12/14 00:29:18.335226 app.go:40: [Trace] Authorization page opened
+2023/12/14 00:30:56.302928 app.go:56: [Trace] Logger loaded
+2023/12/14 00:30:56.313286 app.go:28: [Trace] Config loaded
+2023/12/14 00:30:56.313286 app.go:31: [Trace] Static files loaded
+2023/12/14 00:30:56.313286 app.go:35: [Trace] Main page opened
+2023/12/14 00:30:56.313286 app.go:40: [Trace] Authorization page opened

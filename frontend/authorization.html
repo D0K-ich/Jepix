@@ -9,9 +9,43 @@
     <link rel="stylesheet" href="bootstrap-grid.min.css">
 </head>
 <body>
-    {{ template "partials/Header" .}}
-
-
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">SADOVOD</a>
+            <div class="navbar-wrap">
+                <ul class="navbar-menu">
+                    <li><a href="index4.html">About</a></li>
+                    <li><a href="index2.html">Menu</a></li>
+                    <li><a href="index3.html">Your Profile</a></li>
+                </ul>
+                <a href="#" class="callback">CallBack</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-login">
+        <div class="form">
+        <h1>Log In</h1>
+            <form action="http://127.0.0.1:1111/authorization">
+                <div class="container-login">
+                    <div class="form">
+                        <h1>Log In</h1>
+                        <div class="input-form">
+                            <input type="text" name="login" placeholder="Login222" class="login">
+                        </div>
+                        <div class="input-form">
+                            <input type="password" name="pass" placeholder="Password" class="pass">
+                        </div>
+                        <div class="input-form">
+                            <button type="submit" placeholder="Log In" formmethod="POST">Тест</button>
+                        </div>
+                        <a href="index.html" class="forget">Forgot Password?</a>
+                    </div>
+                </div>
+            </form>
+        <a href="index.html" class="forget">Forgot Password?</a>
+    </div>
+       <script src="login.js"></script>
+    </div> 
 
 </body>
 </html>
