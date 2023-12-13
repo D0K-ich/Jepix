@@ -1,7 +1,9 @@
 package main
 
-import "Jepix/internal/app"
+import (
+	"Jepix/internal/database"
+)
 
 func main() {
-	app.StartServer()
+	Database.Disconnect()
 }

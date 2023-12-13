@@ -4,29 +4,34 @@ package Database
 //todo Перенести файл базы в другую папку
 
 import (
+	"context"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo/options"
+
 	//cfg "Jepix/internal/Config"
 	//models "Jepix/internal/Models"
 	"fmt"
-	"github.com/jmoiron/sqlx"
-	_ "github.com/lib/pq"
-	_ "github.com/mattn/go-sqlite3"
-	"log"
+
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 func Disconnect() {
-	var database, err = sqlx.Connect("sqlite3", "check")
+	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
+	uri := "mongodb+srv://root:root@jepix.yshipgd.mongodb.net/"
+	opts := options.Client().ApplyURI(uri).SetServerAPIOptions(serverAPI)
+	client, err := mongo.Connect(context.TODO(), opts)
 	if err != nil {
-		log.Fatalln(err)
+		panic(err)
 	}
-	fmt.Print("ok")
-	q1, _ := database.Prepare(`
-	CREATE TABLE IF NOT EXISTS users (id INTEGER, name TEXT)
-`)
-	q1.Exec()
-
-	q2, _ := database.Prepare(`
-	SELECT id FROM users
-`)
-	q2.Exec()
-	database.Close()
+	defer func() {
+		if err = client.Disconnect(context.TODO()); err != nil {
+			panic(err)
+		}
+	}()
+	// Send a ping to confirm a successful connection
+	var result bson.M
+	if err := client.Database("admin").RunCommand(context.TODO(), bson.D{{"ping", 1}}).Decode(&result); err != nil {
+		panic(err)
+	}
+	fmt.Println("Pinged your deployment. You successfully connected to MongoDB!")
 }
