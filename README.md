@@ -1,3 +1,3 @@
 # Jepix
 
-Seller of boots
+Seller of cool boots
