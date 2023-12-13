@@ -1,0 +1,157 @@
+//шрифт логотипа сайта
+@font-face{
+    font-family: "faster-one";
+    src: url("fonts/FasterOne-Regular.ttf");
+}
+//цвета стилей
+$colorw: white;
+$colorb: black;
+
+body {
+	position: relative;
+   background-color: white;
+	font-family: sans-serif;
+	font-size: 16px;
+	line-height: 1.4;
+    font-weight: bold;
+	color: #000;
+	min-width: 320px;
+	overflow-x: hidden;
+	height: auto;
+}
+//навбар
+.navbar{
+    width: 100%;
+    height: 80px;
+    display: block;
+    background-color: $colorw;
+    .navbar-logo{
+        font-family: "faster-one";
+        display: block;
+        font-weight: 400;
+        font-size: 46px;
+        text-decoration: none;
+        color: $colorb;
+        position: relative;
+        opacity: 0.8;
+        float: left;
+        padding-left: 50px;
+        padding-top: 0px;
+    }
+    .navbar-about{
+        display: inline-block;
+        color: $colorb;
+        opacity: 0.8;
+        text-decoration: none;
+        padding: 50px;
+        font-size: 18px;
+        transition: all .07s ease-in-out;
+        padding-top: 24px;
+        &:hover{
+            opacity: 1;
+            color: #14008C;
+            transition: all .07s ease-in-out;
+        }
+     }
+    .navbar-wrap{
+        display: flex;
+        flex-flow: row nowrap;
+        float: right;
+        padding-right: 20px;
+    
+            .navbar-menu{
+                display: flex;
+                padding: 5px 0px 5px 5px;
+                justify-content: center;
+                align-items: flex-start;
+                align-content: flex-start;
+                gap: 10px 60px;
+                flex-shrink: 0;
+                flex-wrap: wrap;
+                position: relative;
+                list-style-type: none;
+                padding-right: 200px;
+                padding-top: 20px;
+                     a{
+                        color: $colorb;
+                        opacity: 0.8;
+                        text-decoration: none;
+                        font-size: 18px;
+                        transition: all .07s ease-in-out;
+                        &:hover{
+                            opacity: 1;
+                            color: #14008C;
+                            transition: all .07s ease-in-out;
+                        }
+                    }
+                }
+            .navpic{
+                display: flex;
+                position: relative;
+                margin-left: 40px;
+                a{
+                    position: relative;
+                    padding: 10px;
+                    opacity: 0.6;
+                    img{
+                        width: 35px;
+                        height: 35px;
+                        
+                    }
+                    &:hover{
+                        opacity: 1;
+                    }
+                    
+                }
+            }
+        }
+    }
+//-------------------------------------------------------------
+
+//слайдер под навбаром
+//.slider-container{
+    //position: relative;
+    //align-items: center;
+    //height: 700px;
+    //width: 2000px;
+ //}
+
+ .slick-track {
+    display: flex;
+    align-items: flex-start;
+ }
+
+ .slick-list {
+    overflow: hidden;
+ }
+
+ .slider{
+    top: 30px;
+    position: relative;
+    padding: 0px 60px;
+    .slick-arrow{
+        position:absolute;
+        top: 50%;
+        margin: -30px 0px 0px 0px;
+        z-index: 10;
+        font-size: 0;
+        width: 60px;
+        height: 50px;
+        &.slick-prev{
+            left: 0;
+            background: url('arrows/arrowleft.jpg') 0 0 / 100% no-repeat;
+            border: none
+         }
+        &.slick-next{
+            right: 0;
+            background: url('arrows/arrowright.jpg') 0 0 / 100% no-repeat;
+            border: none
+         }
+     }
+ }
+
+ .slider_item {
+    text-align: center;
+ }
+ 
+// ------------------------------------------------------------------
