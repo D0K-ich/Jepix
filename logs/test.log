@@ -493,3 +493,15 @@
 2023/12/14 00:30:56.313286 app.go:31: [Trace] Static files loaded
 2023/12/14 00:30:56.313286 app.go:35: [Trace] Main page opened
 2023/12/14 00:30:56.313286 app.go:40: [Trace] Authorization page opened
+2023/12/15 02:04:24.003257 app.go:56: [Trace] Logger loaded
+2023/12/15 02:04:24.746381 app.go:23: [Trace] Pinged your deployment. You successfully connected to MongoDB!
+2023/12/15 02:04:24.824125 app.go:28: [Trace] Config loaded
+2023/12/15 02:04:24.824125 app.go:31: [Trace] Static files loaded
+2023/12/15 02:04:24.824631 app.go:35: [Trace] Main page opened
+2023/12/15 02:04:24.824769 app.go:40: [Trace] Authorization page opened
+2023/12/15 02:08:32.086224 app.go:56: [Trace] Logger loaded
+2023/12/15 02:08:32.706561 app.go:23: [Trace] Pinged your deployment. You successfully connected to MongoDB!
+2023/12/15 02:08:32.717413 app.go:28: [Trace] Config loaded
+2023/12/15 02:08:32.717413 app.go:31: [Trace] Static files loaded
+2023/12/15 02:08:32.717413 app.go:35: [Trace] Main page opened
+2023/12/15 02:08:32.717413 app.go:40: [Trace] Authorization page opened

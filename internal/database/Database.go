@@ -4,7 +4,7 @@ package Database
 //todo Перенести файл базы в другую папку
 
 import (
-	cfg "Jepix/internal/config"
+	cfg "Jepix/internal/Config"
 	"context"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
@@ -33,4 +33,13 @@ func Disconnect() string {
 		panic(err)
 	}
 	return "Disconnected from MongoDB successfully!"
+}
+
+func AddUser(id int, created_at int) {
+
+	collection := client.Database("jepix").Collection("jepix")
+	_, err := collection.InsertOne(context.TODO(), bson.D{{"_id", id}, {"created_at", created_at}})
+	if err != nil {
+		panic(err)
+	}
 }

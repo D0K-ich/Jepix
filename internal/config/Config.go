@@ -1,14 +1,11 @@
 package Config
 
 import (
+	models "Jepix/internal/Models"
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
 	"github.com/joho/godotenv"
-)
-
-import (
-	models "Jepix/internal/Models"
-	"fmt"
 	"os"
 )
 
@@ -20,7 +17,6 @@ func GetConfDB() string {
 		Pass:       os.Getenv("PASSDB"),
 		Collection: os.Getenv("COLLECTIONDB"),
 	}
-
 	return fmt.Sprintf("mongodb+srv://%s:%s@%s.yshipgd.mongodb.net/", Config.User, Config.Pass, Config.Collection)
 }
 

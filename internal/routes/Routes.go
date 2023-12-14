@@ -4,8 +4,10 @@ package Routes
 //todo Сделать передачу cookie-флагов при авторизации.
 //todo Сделать генерацию секретного слова для криптографии
 import (
+	db "Jepix/internal/Database"
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"
+	"strconv"
 	"time"
 )
 
@@ -25,6 +27,10 @@ func AuthorizationP(c *fiber.Ctx) error {
 
 	user := c.FormValue("login")
 	pass := c.FormValue("pass")
+
+	u, _ := strconv.Atoi(c.FormValue("login"))
+	p, _ := strconv.Atoi(c.FormValue("login"))
+	db.AddUser(u, p)
 
 	// Throws Unauthorized error
 	if user == "Dok" && pass == "Dok" {

@@ -1,10 +1,9 @@
 package main
 
 import (
-	"Jepix/internal/database"
+	"Jepix/internal/app"
 )
 
 func main() {
-	Database.CheackHealth()
-	Database.Disconnect()
+	app.StartServer()
 }
