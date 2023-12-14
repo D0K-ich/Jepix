@@ -5,33 +5,41 @@ package Database
 
 import (
 	"context"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo/options"
-
-	//cfg "Jepix/internal/Config"
-	//models "Jepix/internal/Models"
-	"fmt"
-
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
+	"log"
 )
 
+var collection *mongo.Collection
+var ctx = context.TODO()
+
+type Task struct {
+	ID        int `bson:"_id"`
+	CreatedAt int `bson:"created_at"`
+}
+
+func createTask(task *Task) error {
+	_, err := collection.InsertOne(ctx, task)
+	return err
+}
+
 func Disconnect() {
-	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
-	uri := "mongodb+srv://root:root@jepix.yshipgd.mongodb.net/"
-	opts := options.Client().ApplyURI(uri).SetServerAPIOptions(serverAPI)
-	client, err := mongo.Connect(context.TODO(), opts)
+	clientOptions := options.Client().ApplyURI("mongodb+srv://root:root@jepix.yshipgd.mongodb.net/")
+	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
-	defer func() {
-		if err = client.Disconnect(context.TODO()); err != nil {
-			panic(err)
-		}
-	}()
-	// Send a ping to confirm a successful connection
-	var result bson.M
-	if err := client.Database("admin").RunCommand(context.TODO(), bson.D{{"ping", 1}}).Decode(&result); err != nil {
-		panic(err)
+	err = client.Ping(ctx, nil)
+	if err != nil {
+		log.Fatal(err)
 	}
-	fmt.Println("Pinged your deployment. You successfully connected to MongoDB!")
+
+	collection = client.Database("jepix").Collection("jepix")
+
+	task1 := &Task{
+		ID:        12,
+		CreatedAt: 13,
+	}
+	createTask(task1)
+
 }
