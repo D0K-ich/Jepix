@@ -12,19 +12,16 @@ import (
 	"os"
 )
 
-var con = godotenv.Load("../../.env")
+var _ = godotenv.Load("../../internal/config/.env")
 
 func GetConfDB() string {
 	Config := models.ConfigDB{
-		User:    os.Getenv("User"),
-		Pass:    os.Getenv("Pass"),
-		Dbname:  os.Getenv("Dbname"),
-		HostDB:  os.Getenv("HostDB"),
-		Port:    os.Getenv("Port"),
-		Sslmode: os.Getenv("Sslmode"),
+		User:       os.Getenv("LOGINDB"),
+		Pass:       os.Getenv("PASSDB"),
+		Collection: os.Getenv("COLLECTIONDB"),
 	}
 
-	return fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%s sslmode=%s", Config.User, Config.Pass, Config.Dbname, Config.HostDB, Config.Port, Config.Sslmode)
+	return fmt.Sprintf("mongodb+srv://%s:%s@%s.yshipgd.mongodb.net/", Config.User, Config.Pass, Config.Collection)
 }
 
 func GetConfigApp() fiber.Config {

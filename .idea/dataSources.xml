@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="postgres@26.145.62.159" uuid="8f9a72b3-8e58-4d02-8489-a58955d51633">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://26.145.62.159:5433/postgres</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="check" uuid="96190cf5-cec6-4605-906b-7e17c6473c6f">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/cmd/app/check</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="@jepix.yshipgd.mongodb.net" uuid="179920aa-8894-4cb3-9275-8557f5b16597">
+    <data-source source="LOCAL" name="@jepix.yshipgd.mongodb.net" uuid="4f281266-b3e8-4791-969c-038dab381ec9">
       <driver-ref>mongo</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
-      <jdbc-url>mongodb+srv://jepix.yshipgd.mongodb.net/</jdbc-url>
+      <jdbc-url>mongodb+srv://jepix.yshipgd.mongodb.net</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

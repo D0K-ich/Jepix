@@ -8,6 +8,7 @@ require (
 	github.com/gofiber/template/html/v2 v2.0.5
 	github.com/golang-jwt/jwt/v5 v5.2.0
 	github.com/joho/godotenv v1.5.1
+	github.com/lib/pq v1.10.9
 	go.mongodb.org/mongo-driver v1.13.1
 )
 

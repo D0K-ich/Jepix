@@ -6,8 +6,8 @@ import (
 
 	"os"
 
-	//db "Jepix/Server/internal/Database"
 	cfg "Jepix/internal/Config"
+	db "Jepix/internal/Database"
 	"Jepix/internal/Routes"
 
 	"github.com/gofiber/fiber/v2"
@@ -17,10 +17,10 @@ import (
 
 func StartServer() {
 
-	LoadLogger()
-	//db.Disconnect()
-	//err := (db.СheckHealth())
-	//log.Trace(err)
+	LoadLogger() // Load logger
+
+	DbStatus := db.CheackHealth()
+	log.Trace(DbStatus)
 
 	fmt.Printf(cfg.GetConfDB())
 

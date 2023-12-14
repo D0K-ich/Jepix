@@ -21,12 +21,9 @@ type //Users depends
 )
 
 type ConfigDB struct {
-	User    string
-	Pass    string
-	Dbname  string
-	HostDB  string
-	Port    string
-	Sslmode string
+	User       string
+	Pass       string
+	Collection string
 }
 
 type TU struct {

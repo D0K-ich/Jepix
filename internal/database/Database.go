@@ -4,42 +4,33 @@ package Database
 //todo Перенести файл базы в другую папку
 
 import (
+	cfg "Jepix/internal/config"
 	"context"
+	"github.com/joho/godotenv"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"log"
 )
 
-var collection *mongo.Collection
-var ctx = context.TODO()
+var _ = godotenv.Load("../../internal/config/.env")
+var serverAPI = options.ServerAPI(options.ServerAPIVersion1)
+var uri = cfg.GetConfDB()
+var opts = options.Client().ApplyURI(uri).SetServerAPIOptions(serverAPI)
+var client *mongo.Client
 
-type Task struct {
-	ID        int `bson:"_id"`
-	CreatedAt int `bson:"created_at"`
+func CheackHealth() string {
+	client, _ = mongo.Connect(context.TODO(), opts)
+	var result bson.M
+	if err := client.Database("admin").RunCommand(context.TODO(), bson.D{{"ping", 1}}).Decode(&result); err != nil {
+		panic(err)
+	}
+	return "Pinged your deployment. You successfully connected to MongoDB!"
 }
 
-func createTask(task *Task) error {
-	_, err := collection.InsertOne(ctx, task)
-	return err
-}
-
-func Disconnect() {
-	clientOptions := options.Client().ApplyURI("mongodb+srv://root:root@jepix.yshipgd.mongodb.net/")
-	client, err := mongo.Connect(ctx, clientOptions)
+func Disconnect() string {
+	err := client.Disconnect(context.TODO())
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
-	err = client.Ping(ctx, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	collection = client.Database("jepix").Collection("jepix")
-
-	task1 := &Task{
-		ID:        12,
-		CreatedAt: 13,
-	}
-	createTask(task1)
-
+	return "Disconnected from MongoDB successfully!"
 }
