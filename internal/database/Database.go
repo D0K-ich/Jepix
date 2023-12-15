@@ -1,8 +1,5 @@
 package Database
 
-//todo Сделать checkheals, disconnect, init и ping
-//todo Перенести файл базы в другую папку
-
 import (
 	cfg "Jepix/internal/Config"
 	"context"

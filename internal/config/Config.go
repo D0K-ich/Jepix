@@ -7,6 +7,7 @@ import (
 	"github.com/gofiber/template/html/v2"
 	"github.com/joho/godotenv"
 	"os"
+	"strconv"
 )
 
 var _ = godotenv.Load("../../internal/config/.env")
@@ -21,14 +22,16 @@ func GetConfDB() string {
 }
 
 func GetConfigApp() fiber.Config {
-	engine := html.New("../../frontend", ".html")
+	engine := html.New(os.Getenv("PATH_TO_FRONT_FILES"), ".html")
+	CaseSens, _ := strconv.ParseBool(os.Getenv("CASESENSETIVE"))
+	EnableIpTrack, _ := strconv.ParseBool(os.Getenv("ENABLEIPTRACK"))
 
 	return fiber.Config{
-		AppName:       "Jepix",
-		CaseSensitive: true, // разница в carmelCase в запросах
+		AppName:       os.Getenv("APPNAME"),
+		CaseSensitive: CaseSens, // разница в carmelCase в запросах
 		//BodyLimit:          5,    // лимит запросов
 		//Concurrency:        2,    // параллельные подключение
-		EnableIPValidation: true, // проверка ip, первый рабочий будет возвращаться
+		EnableIPValidation: EnableIpTrack, // проверка ip, первый рабочий будет возвращаться
 		Views:              engine,
 	}
 }

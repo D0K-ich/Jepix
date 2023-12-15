@@ -1,7 +1,6 @@
 package app
 
 import (
-	"fmt"
 	jwtware "github.com/gofiber/contrib/jwt"
 
 	"os"
@@ -17,27 +16,31 @@ import (
 
 func StartServer() {
 
-	LoadLogger() // Load logger
+	//LOGGER
+	LoadLogger()
 
+	//DB
 	DbStatus := db.CheackHealth()
 	log.Trace(DbStatus)
 
-	fmt.Printf(cfg.GetConfDB())
-
+	//Init app
 	app := fiber.New(cfg.GetConfigApp())
-	log.Trace("Config loaded")
+	log.Trace("App with config loaded")
 
+	//Load TMP files
 	app.Static("/", "../../frontend/tmp")
 	log.Trace("Static files loaded")
 
+	//Middlewares for main page
 	app.Get("/main", Routes.MainRoute)
-	app.Post("/main", Routes.MainRouteP)
-	log.Trace("Main page opened")
 
+	//Middlewares for authorization page
 	app.Get("/authorization", Routes.Authorization)
-	app.Post("/authorization", Routes.AuthorizationP)
-	app.Post("/reg", Routes.Registration)
-	log.Trace("Authorization page opened")
+	app.Post("/authorization/data", Routes.AuthorizationData)
+
+	//Middlewares for authorization page
+	app.Get("/registration", Routes.Authorization)
+	app.Post("/registration/data", Routes.Registration)
 
 	app.Use(jwtware.New(jwtware.Config{
 		SigningKey: jwtware.SigningKey{Key: []byte("secret")},

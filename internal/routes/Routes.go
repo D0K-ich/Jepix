@@ -5,25 +5,24 @@ package Routes
 //todo Сделать генерацию секретного слова для криптографии
 import (
 	db "Jepix/internal/Database"
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"
 	"strconv"
 	"time"
 )
 
+//var _ = godotenv.Load("../../internal/config/.env")
+
 func MainRoute(c *fiber.Ctx) error {
 	return c.Render("main", fiber.Map{})
-}
-
-func MainRouteP(c *fiber.Ctx) error {
-	return c.JSON("321232132")
 }
 
 func Authorization(c *fiber.Ctx) error {
 	return c.Render("authorization", fiber.Map{})
 }
 
-func AuthorizationP(c *fiber.Ctx) error {
+func AuthorizationData(c *fiber.Ctx) error {
 
 	user := c.FormValue("login")
 	pass := c.FormValue("pass")
@@ -52,7 +51,9 @@ func AuthorizationP(c *fiber.Ctx) error {
 	if err != nil {
 		return c.SendStatus(fiber.StatusInternalServerError)
 	}
+	c.Redirect("/authorization")
 
+	fmt.Println(t)
 	return c.JSON(fiber.Map{"token": t})
 
 }
@@ -82,6 +83,7 @@ func Registration(c *fiber.Ctx) error {
 	}
 
 	//
+	c.Redirect("/registration")
 	return c.JSON("Registered!%s", t)
 }
 
