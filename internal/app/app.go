@@ -5,9 +5,8 @@ import (
 
 	"os"
 
-	cfg "Jepix/internal/Config"
-	db "Jepix/internal/Database"
-	"Jepix/internal/Routes"
+	cfg "Jepix/internal/config"
+	"Jepix/internal/routes"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/log"
@@ -17,11 +16,11 @@ import (
 func StartServer() {
 
 	//LOGGER
-	LoadLogger()
+	//LoadLogger()
 
 	//DB
-	DbStatus := db.CheackHealth()
-	log.Trace(DbStatus)
+	//DbStatus := db.CheackHealth()
+	//log.Trace(DbStatus)
 
 	//Init app
 	app := fiber.New(cfg.GetConfigApp())
@@ -46,14 +45,13 @@ func StartServer() {
 		SigningKey: jwtware.SigningKey{Key: []byte("secret")},
 	}))
 
-	app.Listen("127.0.0.1:1111")
+	app.Listen(":8080")
 }
 
 func LoadLogger() {
 	f, err := os.OpenFile("../../logs/test.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatal(err)
-		return
 	}
 	log.SetOutput(f)
 	log.Trace("Logger loaded")

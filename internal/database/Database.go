@@ -1,7 +1,7 @@
 package Database
 
 import (
-	cfg "Jepix/internal/Config"
+	cfg "Jepix/internal/config"
 	"context"
 	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"

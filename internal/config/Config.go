@@ -1,7 +1,7 @@
 package Config
 
 import (
-	models "Jepix/internal/Models"
+	models "Jepix/internal/models"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"

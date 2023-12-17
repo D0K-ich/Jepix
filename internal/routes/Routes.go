@@ -3,11 +3,15 @@ package Routes
 //todo Сделать отдельную авторизацию для админа. Реализовать регистрацию.
 //todo Сделать передачу cookie-флагов при авторизации.
 //todo Сделать генерацию секретного слова для криптографии
+//todo Сделать нормальную обработку grpc ошибки (валидация данных)
 import (
-	db "Jepix/internal/Database"
+	db "Jepix/internal/database"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/log"
 	"github.com/golang-jwt/jwt/v5"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"strconv"
 	"time"
 )
@@ -26,6 +30,11 @@ func AuthorizationData(c *fiber.Ctx) error {
 
 	user := c.FormValue("login")
 	pass := c.FormValue("pass")
+
+	err := validateData(user, pass)
+	if err != nil {
+		log.Trace(err)
+	}
 
 	u, _ := strconv.Atoi(c.FormValue("login"))
 	p, _ := strconv.Atoi(c.FormValue("login"))
@@ -92,4 +101,13 @@ func restricted(c *fiber.Ctx) error {
 	claims := user.Claims.(jwt.MapClaims)
 	name := claims["name"].(string)
 	return c.SendString("Welcome " + name)
+}
+
+func validateData(data ...string) error {
+	for _, value := range data {
+		if value == "" {
+			return status.Error(codes.InvalidArgument, "This parameter is required!")
+		}
+	}
+	return nil
 }
