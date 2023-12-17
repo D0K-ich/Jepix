@@ -4,19 +4,21 @@ package Models
 type //Users depends
 (
 	Customer struct {
-		Name           string `json:"name" `
-		Surname        string `json:"surname"`
-		Email          string `json:"email"`
-		Dateofregister int    `json:"dateofregister"`
-		Balancemoney   int    `json:"balancemoney"`
-		Balancebonus   int    `json:"balancebonus"`
-		Promocodes     int    `json:"promocodes"`
+		Name           string    `json:"name" `
+		Surname        string    `json:"surname"`
+		Email          string    `json:"email"`
+		Phone          string    `json:"phone"`
+		Password       string    `json:"password"`
+		Dateofregister int64     `json:"dateofregister"`
+		Balancemoney   int       `json:"balancemoney"`
+		Balancebonus   int       `json:"balancebonus"`
+		Promocodes     Promocode `json:"promocodes"`
 	}
 	Promocode struct {
-		Datecreated int `json:"Dateofregister"`
-		Datedead    int `json:"Datedead"`
-		Percent     int `json:"Percent"`
-		UUID        int `json:"uuid"`
+		Datecreated int64  `json:"Dateofregister"`
+		Datedead    int64  `json:"Datedead"`
+		Percent     int    `json:"Percent"`
+		UUID        string `json:"uuid"`
 	}
 )
 
